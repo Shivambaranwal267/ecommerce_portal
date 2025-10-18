@@ -1,0 +1,41 @@
+body {
+    font-family: "Lato", sans-serif;
+}
+
+.theme-navbar-light {
+    background-color: #add1f5;
+}
+
+.theme-navbar {
+    background-color: #0066cc;
+}
+
+.theme-orange-btn {
+    background-color: #ff6600;
+}
+
+.theme-orange-btn:hover {
+    background-color: #ff6600;
+    opacity: 0.8;
+}
+
+.theme-green-btn {
+    background-color: #28a745;
+}
+
+.theme-green-btn:hover {
+    background-color: #28a745;
+    opacity: 0.8;
+}
+
+.theme-footer {
+    background-color: #0066cc;
+}
+
+.theme-product img:hover {
+    transform: scaleX(-1);
+}
+
+.checked {
+    color: #ff6600;
+}
