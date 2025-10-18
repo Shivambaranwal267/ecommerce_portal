@@ -69,6 +69,10 @@ Route::get('vendor/view-product', [ProductController::class, 'viewproduct']);
 
 Route::get('vendor/edit-product/{p_id}', [ProductController::class, 'editproduct']);
 Route::put('vendor/edit-product/{p_id}', [ProductController::class, 'updateproduct']);
+Route::delete('vendor/delete-product/{p_id}', [ProductController::class, 'deleteproduct']);
+
+
+
 
 Route::get('vendor/orders', [VendorController::class, 'orders']);
 

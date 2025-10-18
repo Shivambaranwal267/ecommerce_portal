@@ -53,15 +53,15 @@ class ProductController extends Controller
         return view('vendor.edit-product', compact('product', 'category'));
     }
 
-    public function updateproduct(Request $request, $p_id){
+    public function updateproduct(Request $request, $p_id)
+    {
 
         $product = Product::find($p_id);
 
         $image = $product->p_image;
 
-        if($request->hasFile('p_image')) {
-           $image = $request->file('p_image')->store('products', 'public');
-
+        if ($request->hasFile('p_image')) {
+            $image = $request->file('p_image')->store('products', 'public');
         }
 
         $product->update([
@@ -74,5 +74,19 @@ class ProductController extends Controller
         ]);
 
         return redirect('vendor/view-product')->with('msg', 'Product Updated Successfully.');
+    }
+
+    public function deleteproduct($p_id)
+    {
+        $product = Product::find($p_id);
+
+        if (!$product) {
+            return redirect('vendor/view-product')->with('msg', 'Product not found');
+        }
+
+
+        $product->delete();
+
+        return redirect('vendor/view-product')->with('msg', 'Product deleted successfully.');
     }
 }

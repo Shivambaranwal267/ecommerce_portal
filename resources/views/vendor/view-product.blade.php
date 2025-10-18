@@ -26,12 +26,24 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th scope="col"><h5>Product</h5></th>
-                                            <th scope="col"><h5>Price</h5></th>
-                                            <th scope="col"><h5>Category</h5></th>
-                                            <th scope="col"><h5>Stock</h5></th>
-                                            <th scope="col"><h5>Description</h5></th>
-                                            <th scope="col"><h5>Action</h5></th>
+                                            <th scope="col">
+                                                <h5>Product</h5>
+                                            </th>
+                                            <th scope="col">
+                                                <h5>Price</h5>
+                                            </th>
+                                            <th scope="col">
+                                                <h5>Category</h5>
+                                            </th>
+                                            <th scope="col">
+                                                <h5>Stock</h5>
+                                            </th>
+                                            <th scope="col">
+                                                <h5>Description</h5>
+                                            </th>
+                                            <th scope="col">
+                                                <h5>Action</h5>
+                                            </th>
 
                                         </tr>
                                     </thead>
@@ -57,8 +69,14 @@
                                                     <td>{{ $product->p_description }}</td>
                                                     <td>
                                                         <a href="{{ url('vendor/edit-product', $product->p_id) }}"
-                                                            class="btn btn-primary btn-sm"><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a href="#" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></a>
+                                                            class="btn btn-primary btn-sm"><i
+                                                                class="fa-solid fa-pen-to-square"></i></a>
+
+                                                        <form method="POST" action="{{ url('vendor/delete-product',$product->p_id) }}" class="d-inline">
+                                                         @csrf
+                                                         @method('DELETE')
+                                                         <button type="submit" class="btn btn-danger btn-sm"><i class="fa-solid fa-trash"></i></button>
+                                                        </form>
                                                     </td>
 
                                                 </tr>
