@@ -15,9 +15,16 @@ class VendorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (!session('vendorLogin')) {
-            return $next($request);
+        if (!session()->has('vendorLogin')) {
+            return redirect('vendor/login')->with('msg', 'Please login first.');
         }
-        abort(401);
+
+        return $next($request);
     }
 }
+
+
+// if (!session('vendorLogin')) {
+//     return $next($request);
+// }
+// abort(401);

@@ -55,9 +55,9 @@ class VendorController extends Controller
         if ($checkVendor && Hash::check($request->password, $checkVendor->password)) {
 
             if ($checkVendor->status == 'verified') {
-                session(['vendorLogin', true]);
+                session(['vendorLogin' => true]);
                 session(['vendorName' => $checkVendor->full_name]);
-                session(['vendorId' => $checkVendor->id]);
+                session(['vendorId' => $checkVendor->v_id]);
                 return redirect('vendor/');
             } else {
                 return redirect('vendor/login')->with('msg', 'Your account is not verified. Please contact support.');
@@ -84,20 +84,6 @@ class VendorController extends Controller
         return view('vendor.index');
     }
 
-    // public function addproduct()
-    // {
-    //     return view('vendor.add-product');
-    // }
-
-    // public function viewproduct()
-    // {
-    //     return view('vendor.view-product');
-    // }
-
-    // public function editproduct()
-    // {
-    //     return view('vendor.edit-product');
-    // }
 
     public function orders()
     {
@@ -116,6 +102,58 @@ class VendorController extends Controller
 
     public function profile()
     {
-        return view('vendor.profile');
+        $v_id = session('vendorId');
+
+        if (!$v_id) {
+            return redirect('vendor/login')->with('msg', 'Please login first.');
+        }
+
+        $vendor = Vendor::find($v_id);
+
+        if (!$vendor) {
+            return redirect('vendor/login')->with('msg', 'Vendor not found.');
+        }
+
+        return view('vendor.profile', compact('vendor'));
+    }
+
+    public function updateprofile(Request $request)
+    {
+
+        $v_id = session('vendorId');
+
+        $vendor = Vendor::find($v_id);
+
+        $request->validate([
+            'full_name' => 'required',
+            'phone' => 'required',
+            'email' => 'required',
+            'address' => 'required',
+            'id_number' => 'required',
+            'business_name' => 'required',
+            'business_type' => 'required',
+            'gst_number' => 'required',
+            'business_category' => 'required',
+            'bank_account_no' => 'required',
+            'payment_method' => 'required',
+        ]);
+
+        // $vendor->update($request->all());
+
+        $vendor->update([
+            'full_name' => $request->full_name,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'id_number' => $request->id_number,
+            'business_name' => $request->business_name,
+            'business_type' => $request->business_type,
+            'gst_number' => $request->gst_number,
+            'business_category' => $request->business_category,
+            'bank_account_no' => $request->bank_account_no,
+            'payment_method' => $request->payment_method,
+        ]);
+
+        return redirect('vendor/profile')->with('msg', 'Profile updated successfully!');
     }
 }

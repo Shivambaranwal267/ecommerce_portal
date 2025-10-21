@@ -81,6 +81,7 @@ Route::get('vendor/order-detail', [VendorController::class, 'orderdetail']);
 Route::get('vendor/users', [VendorController::class, 'users']);
 
 Route::get('vendor/profile', [VendorController::class, 'profile']);
+Route::put('vendor/profile', [VendorController::class, 'updateprofile']);
 
 
 
