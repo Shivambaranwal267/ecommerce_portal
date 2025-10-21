@@ -84,13 +84,13 @@
                             <div class="col-xl-4 col-md-4 mt-5">
 
                                 <div class="text-center">
-                                    <img src="{{ asset('dashboard/assets/img/user.png') }}" style="width:155px;">
+                                    <img src="{{ asset('storage/' . $vendor->image) }}" style="width:155px;">
                                     <div class="mt-3">
                                         <label for="image" class="form-label btn btn-dark">Choose Image</label>
                                         <input type="file" name="image" class="form-control d-none" id="image">
-                                        {{-- @error('image')
-                                        <div class="text-danger">{{ $message }}</div>
-                                        @enderror --}}
+                                        @error('image')
+                                            <div class="text-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -113,10 +113,14 @@
                                         <label class="form-label">Business Type</label>
                                         <select class="form-select" aria-label="Default select example"
                                             name="business_type">
-                                            <option selected>Select Business type</option>
-                                            <option value="sole Proprietor ">Sole Proprietor</option>
-                                            <option value="partnership">Partnership</option>
-                                            <option value="corporation">Corporation</option>
+
+                                            <option @if ($vendor->business_type == 'sole Proprietor') selected @endif
+                                                value="sole Proprietor ">Sole Proprietor</option>
+                                            <option @if ($vendor->business_type == 'partnership') selected @endif value="partnership">
+                                                Partnership</option>
+                                            <option @if ($vendor->business_type == 'corporation') selected @endif value="corporation">
+                                                Corporation</option>
+
                                         </select>
                                         @error('business_type')
                                             <div class="text-danger">{{ $message }}</div>
@@ -174,10 +178,12 @@
                                         <label class="form-label">Prefer Payment Method</label>
                                         <select class="form-select" aria-label="Default select example"
                                             name="payment_method">
-                                            <option selected>Select Payment Method</option>
-                                            <option value="PayPal">PayPal</option>
-                                            <option value="bank transfer">Bank Transfer</option>
-                                            <option value="E wallet">E wallet</option>
+                                            <option @if ($vendor->payment_method == 'Paypal') selected @endif value="PayPal">PayPal
+                                            </option>
+                                            <option @if ($vendor->payment_method == 'bank transfer') selected @endif
+                                                value="bank transfer">Bank Transfer</option>
+                                            <option @if ($vendor->payment_method == 'E wallet') selected @endif value="E wallet">E
+                                                wallet</option>
                                         </select>
                                         @error('payment_method')
                                             <div class="text-danger">{{ $message }}</div>
