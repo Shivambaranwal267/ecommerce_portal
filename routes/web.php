@@ -113,5 +113,6 @@ Route::get('admin/orders', [AdminController::class, 'orders']);
 Route::get('admin/add-banner', [AdminBannerController::class, 'addbanner']);
 Route::post('admin/add-banner', [AdminBannerController::class, 'createbanner']);
 Route::get('admin/view-banner', [AdminBannerController::class, 'viewbanner']);
+Route::delete('admin/delete-banner/{b_id}', [AdminBannerController::class, 'deletebanner']);
 
 // Route::get('admin/products',[AdminController::class,'products']);

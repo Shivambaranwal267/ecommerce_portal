@@ -30,8 +30,8 @@ class AdminBannerController extends Controller
 
     public function viewbanner()
     {
-        // $category = Category::all();
-        return view('admin.view-banner');
+        $banners = Banner::all();
+        return view('admin.view-banner', compact('banners'));
     }
 
     // public function editcategory($c_id)
@@ -58,12 +58,12 @@ class AdminBannerController extends Controller
     //     return redirect('admin/view-category')->with('msg', 'Category updated successfully.');
     // }
 
-    // public function deletecategory($c_id)
-    // {
-    //     $category = Category::find($c_id);
+    public function deletebanner($b_id)
+    {
+        $banners = Banner::find($b_id);
 
-    //     $category->delete();
+        $banners->delete();
 
-    //     return redirect('admin/view-category')->with('msg', 'Category deleted successfully.');
-    // }
+        return redirect('admin/view-banner')->with('msg', 'Banner deleted successfully.');
+    }
 }
