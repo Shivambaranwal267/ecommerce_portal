@@ -19,10 +19,27 @@
                                     @method('PUT')
 
                                     <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Parent Category</label>
+                                        <select class="form-select" name="p_c_id">
+
+                                            <option value="0">Select Parent Category</option>
+
+                                            @foreach ($p_category as $cat)
+                                                <option @if ($cat->c_id == $category->p_c_id) selected @endif
+                                                    value="{{ $cat->c_id }}">
+                                                    {{ $cat->c_name }}</option>
+                                            @endforeach
+
+
+                                        </select>
+
+                                    </div>
+
+                                    <div class="col-lg-12 mb-3">
                                         <label class="form-label">Category Name</label>
                                         <input type="text" name="c_name" class="form-control"
                                             value="{{ $category->c_name }}">
-                                    
+
                                     </div>
 
                                     <div class="col-lg-12 mb-3">
@@ -34,7 +51,7 @@
 
 
                                     <div class="col-lg-3">
-                                        <button type="submit" class="btn btn-primary ">Update Category</button>
+                                        <button type="submit" class="btn btn-primary">Update Category</button>
                                     </div>
 
                                 </form>

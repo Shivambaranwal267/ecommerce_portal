@@ -6,6 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    public $fillable = ['c_name', 'c_commission',];
+    public $fillable = ['p_c_id', 'c_name', 'c_commission'];
+    
     protected $primaryKey = 'c_id';
+
+    function parentCategory()
+    {
+        return $this->belongsTo(Category::class, 'p_c_id');
+    }
 }

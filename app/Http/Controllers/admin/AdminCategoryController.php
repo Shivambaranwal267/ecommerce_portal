@@ -13,7 +13,8 @@ class AdminCategoryController extends Controller
 
     public function addcategory()
     {
-        return view('admin.add-category');
+        $category = Category::where('p_c_id', 0)->get();
+        return view('admin.add-category', compact('category'));
     }
     public function createcategory(Request $request)
     {
@@ -23,6 +24,7 @@ class AdminCategoryController extends Controller
         ]);
 
         Category::create([
+            'p_c_id' => $request->p_c_id,
             'c_name' => $request->c_name,
             'c_commission' => $request->c_commission,
         ]);
@@ -39,7 +41,8 @@ class AdminCategoryController extends Controller
     public function editcategory($c_id)
     {
         $category = Category::find($c_id);
-        return view('admin.edit-category', compact('category'));
+        $p_category = Category::where('p_c_id', 0)->get();
+        return view('admin.edit-category', compact('category', 'p_category'));
     }
 
     public function updatecategory(Request $request, $c_id)
@@ -52,13 +55,13 @@ class AdminCategoryController extends Controller
         ]);
 
         $category->update([
+            'p_c_id' => $request->p_c_id,
             'c_name' => $request->c_name,
             'c_commission' => $request->c_commission,
         ]);
 
 
         return redirect('admin/view-category')->with('msg', 'Category updated successfully.');
-
     }
 
     public function deletecategory($c_id)
@@ -66,7 +69,7 @@ class AdminCategoryController extends Controller
         $category = Category::find($c_id);
 
         $category->delete();
-        
+
         return redirect('admin/view-category')->with('msg', 'Category deleted successfully.');
     }
 }

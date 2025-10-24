@@ -6,6 +6,17 @@
 <script src="{{url('dashboard/assets/demo/chart-bar-demo.js')}}"></script>
 <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
 <script src="{{url('dashboard/js/datatables-simple-demo.js')}}"></script>
+<script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const alert = document.getElementById("success-alert");
+            if (alert) {
+                setTimeout(() => {
+                    const bsAlert = new bootstrap.Alert(alert);
+                    bsAlert.close();
+                }, 2000); // 2 seconds
+            }
+        });
+    </script>
 </body>
 </html>
 

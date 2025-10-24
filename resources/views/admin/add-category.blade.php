@@ -24,6 +24,17 @@
                                 <form action="{{ url('admin/add-category') }}" method="POST">
                                     @csrf
                                     <div class="col-lg-12 mb-3">
+                                        <label class="form-label">Parent Category</label>
+                                        <select name="p_c_id" class="form-select">
+                                            <option value="0">Select Parent Category</option>
+                                            @foreach ($category as $cat)
+                                                <option value="{{ $cat->c_id }}">{{ $cat->c_name }}</option>
+                                            @endforeach
+                                        </select>
+
+                                    </div>
+
+                                    <div class="col-lg-12 mb-3">
                                         <label class="form-label">Category Name</label>
                                         <input type="text" name="c_name" class="form-control" placeholder="Electronics">
                                         @error('c_name')

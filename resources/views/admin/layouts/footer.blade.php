@@ -1,10 +1,23 @@
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="{{url('dashboard/js/scripts.js')}}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous">
+</script>
+<script src="{{ url('dashboard/js/scripts.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<script src="{{url('dashboard/assets/demo/chart-area-demo.js')}}"></script>
-<script src="{{url('dashboard/assets/demo/chart-bar-demo.js')}}"></script>
-<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-<script src="{{url('dashboard/js/datatables-simple-demo.js')}}"></script>
+<script src="{{ url('dashboard/assets/demo/chart-area-demo.js') }}"></script>
+<script src="{{ url('dashboard/assets/demo/chart-bar-demo.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+    crossorigin="anonymous"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const alert = document.getElementById("success-alert");
+        if (alert) {
+            setTimeout(() => {
+                const bsAlert = new bootstrap.Alert(alert);
+                bsAlert.close();
+            }, 2000); // 2 seconds
+        }
+    });
+</script>
+<script src="{{ url('dashboard/js/datatables-simple-demo.js') }}"></script>
 </body>
+
 </html>

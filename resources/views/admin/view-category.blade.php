@@ -9,12 +9,13 @@
             <div class="container-fluid px-4">
 
                 <div class="card p-4 mt-4">
-                    @session('msg')
-                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @if (session('msg'))
+                        <div class="alert alert-success alert-dismissible fade show" role="alert" id="success-alert">
                             <strong>{{ session('msg') }}</strong>
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-                    @endsession
+                    @endif
+
                     <div class="row">
                         <div class="col-xl-12 col-md-12">
                             <div class="d-flex">
@@ -27,6 +28,9 @@
                                         <tr>
                                             <th scope="col">
                                                 <h5>Sr. No.</h5>
+                                            </th>
+                                            <th scope="col">
+                                                <h5>Parent Category</h5>
                                             </th>
                                             <th scope="col">
                                                 <h5>Category Name</h5>
@@ -47,21 +51,28 @@
                                             <tr>
 
                                                 <td>{{ $cat->c_id }}</td>
+                                                <td>
+                                                    @if ($cat->parentCategory)
+                                                        {{ $cat->parentCategory->c_name }}
+                                                    @else
+                                                        {{ '-' }}
+                                                    @endif
+                                                </td>
                                                 <td>{{ $cat->c_name }}</td>
                                                 <td>{{ $cat->c_commission }}</td>
 
                                                 <td>
 
-                                                        <a href="{{ url('admin/edit-category', $cat->c_id) }}"
-                                                            class="btn btn-primary btn-sm"><i
-                                                                class="fa-solid fa-pen-to-square"></i></a>
-                                                        <form method="POST" class="d-inline"
-                                                            action="{{ url('admin/delete-category', $cat->c_id) }}">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger btn-sm"><i
-                                                                    class="fa-solid fa-trash"></i></button>
-                                                        </form>
+                                                    <a href="{{ url('admin/edit-category', $cat->c_id) }}"
+                                                        class="btn btn-primary btn-sm"><i
+                                                            class="fa-solid fa-pen-to-square"></i></a>
+                                                    <form method="POST" class="d-inline"
+                                                        action="{{ url('admin/delete-category', $cat->c_id) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit" class="btn btn-danger btn-sm"><i
+                                                                class="fa-solid fa-trash"></i></button>
+                                                    </form>
 
                                                 </td>
 
@@ -76,5 +87,4 @@
                 </div>
             </div>
         </main>
-        
     @endsection
