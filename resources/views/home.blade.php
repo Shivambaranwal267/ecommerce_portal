@@ -45,59 +45,23 @@
 
             </div>
             <div class="row theme-product">
-                <div class="col-lg-3">
-                    <div class="card ">
+                @foreach ($products as $product)
+                    <div class="col-lg-3">
+                        <div class="card ">
 
-                        <a href="#"><img src="{{ asset('assets/images/products/1.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center "><a href="#"
-                                    class="text-dark text-decoration-none">Campus Shoes</a></h6>
-                            <h5 class="card-title text-center">₹ 499.00</h5>
+                            <a href="#"><img src="{{ asset('storage/' . $product->p_image) }}" class="card-img-top"
+                                    alt="Top-DealsImg..."></a>
+                            <div class="card-body">
+                                <h6 class="card-title text-center "><a href="#"
+                                        class="text-dark text-decoration-none">{{ $product->p_name }}</a></h6>
+                                <h5 class="card-title text-center">{{ $product->p_price }}</h5>
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-lg-3">
-                    <div class="card">
 
-                        <a href="#"><img src="{{ asset('assets/images/products/2.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Apple Watch</a></h6>
-                            <h5 class="card-title text-center">₹ 1499.00</h5>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/3.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#" class="text-dark text-decoration-none">Nike
-                                    Cap</a></h6>
-                            <h5 class="card-title text-center">₹ 799.00</h5>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/4.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Wooden Chair</a></h6>
-                            <h5 class="card-title text-center">₹ 1399.00</h5>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -117,130 +81,57 @@
 
             </div>
             <div class="row theme-product">
-                <div class="col-lg-3">
-                    <div class="card ">
+                @foreach ($electronics as $electronic)
+                    <div class="col-lg-3">
+                        <div class="card ">
 
-                        <a href="#"><img src="{{ asset('assets/images/products/5.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center "><a href="#"
-                                    class="text-dark text-decoration-none">Camera</a></h6>
-                            <h5 class="card-title text-center">₹ 2499.00</h5>
+                            <a href="#"><img src="{{ asset('storage/' . $electronic->p_image) }}" class="card-img-top"
+                                    alt="..."></a>
+                            <div class="card-body">
+                                <h6 class="card-title text-center "><a href="#"
+                                        class="text-dark text-decoration-none">{{ $electronic->p_name }}</a></h6>
+                                <h5 class="card-title text-center">{{ $electronic->p_price }}</h5>
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-lg-3">
-                    <div class="card">
 
-                        <a href="#"><img src="{{ asset('assets/images/products/2.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Apple Watch</a></h6>
-                            <h5 class="card-title text-center">₹ 1499.00</h5>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/7.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">LED TV</a></h6>
-                            <h5 class="card-title text-center">₹ 5999.00</h5>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/8.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Washing Machine</a></h6>
-                            <h5 class="card-title text-center">₹ 13999.00</h5>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
 
-    <!-- Popular Categories -->
+    <!-- Popular Products -->
 
     <section class="my-5">
         <div class="container">
 
             <div class="d-flex">
                 <div class="flex-grow-1">
-                    <h2>Popular Categories</h2>
+                    <h2>Popular Products</h2>
                 </div>
                 <div><a href="{{ url('category/electronics') }}"
                         class="btn btn-sm theme-green-btn text-light rounded-pill px-3 py-2">View All</a></div>
 
             </div>
             <div class="row theme-product">
-                <div class="col-lg-3">
-                    <div class="card ">
+                @foreach ($popular as $pop)
+                    <div class="col-lg-3">
+                        <div class="card ">
 
-                        <a href="#"><img src="{{ asset('assets/images/products/9.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center "><a href="#"
-                                    class="text-dark text-decoration-none">Hand Bag</a></h6>
-                            <h5 class="card-title text-center">₹ 799.00</h5>
+                            <a href="#"><img src="{{ asset('storage/' . $pop->p_image) }}" class="card-img-top"
+                                    alt="..."></a>
+                            <div class="card-body">
+                                <h6 class="card-title text-center "><a href="#"
+                                        class="text-dark text-decoration-none">{{ $pop->p_name }}</a></h6>
+                                <h5 class="card-title text-center">{{ $pop->p_price }}</h5>
 
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/2.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Apple Watch</a></h6>
-                            <h5 class="card-title text-center">₹ 1499.00</h5>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/10.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Laptop Bag</a></h6>
-                            <h5 class="card-title text-center">₹ 599.00</h5>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/8.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Washing Machine</a></h6>
-                            <h5 class="card-title text-center">₹ 13999.00</h5>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -260,59 +151,25 @@
 
             </div>
             <div class="row theme-product">
-                <div class="col-lg-3">
-                    <div class="card ">
 
-                        <a href="#"><img src="{{ asset('assets/images/products/5.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center "><a href="#"
-                                    class="text-dark text-decoration-none">Camera</a></h6>
-                            <h5 class="card-title text-center">₹ 2499.00</h5>
+                @foreach ($recent as $rec)
+                    <div class="col-lg-3">
+                        <div class="card ">
 
+                            <a href="#"><img src="{{ asset('storage/' . $rec->p_image) }}" class="card-img-top"
+                                    alt="..."></a>
+                            <div class="card-body">
+                                <h6 class="card-title text-center "><a href="#"
+                                        class="text-dark text-decoration-none">{{ $rec->p_name }}</a></h6>
+                                <h5 class="card-title text-center">{{ $rec->p_price }}</h5>
+
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endforeach
 
-                <div class="col-lg-3">
-                    <div class="card">
 
-                        <a href="#"><img src="{{ asset('assets/images/products/6.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Women Shoes</a></h6>
-                            <h5 class="card-title text-center">₹ 1099.00</h5>
 
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/7.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">LED TV</a></h6>
-                            <h5 class="card-title text-center">₹ 5999.00</h5>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3">
-                    <div class="card">
-
-                        <a href="#"><img src="{{ asset('assets/images/products/8.jpg') }}" class="card-img-top"
-                                alt="..."></a>
-                        <div class="card-body">
-                            <h6 class="card-title text-center"><a href="#"
-                                    class="text-dark text-decoration-none">Washing Machine</a></h6>
-                            <h5 class="card-title text-center">₹ 13999.00</h5>
-
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>

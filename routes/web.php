@@ -21,9 +21,9 @@ Route::get('/', function () {
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/category/{slug}', [CategoryController::class, 'detail']);
+Route::get('Category/{category}', [CategoryController::class, 'detail'])->name('category');
 
-Route::get('/category/electronics/{slug}', [SubcategoryController::class, 'detail']);
+Route::get('Sub-Category/{category}/{sub_category}', [SubcategoryController::class, 'detail'])->name('category.sub_category');
 
 Route::get('/category/electronics/tv/{slug}', [ProductdetailController::class, 'detail']);
 

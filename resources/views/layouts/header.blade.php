@@ -1,3 +1,9 @@
+@php
+    use App\Models\Category;
+    $category = Category::where('p_c_id', 0)->get();
+@endphp
+
+
 <!doctype html>
 <html lang="en">
 
@@ -58,19 +64,43 @@
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="nav">
+                    @foreach ($category as $cat)
+                        {{-- <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="{{ url('category/electronics') }}"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">{{ $cat->c_name }}
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('category', $cat->c_name) }}">All</a>
+                                    @if ($cat->subCategory->count() > 0)
+                                </li>
+                                @foreach ($cat->subCategory as $subcat)
+                                    <li><a class="dropdown-item"
+                                            href="{{ route('category.sub_category', ['category' => $cat->c_name, 'sub_category' => $subcat->c_name]) }}">{{ $subcat->c_name }}</a>
+                                    </li>
+                                @endforeach
+                    @endif
+                </ul>
 
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="{{ url('category/electronics') }}"
-                            role="button" data-bs-toggle="dropdown" aria-expanded="false">Mobile
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="{{ url('category/electronics/tv') }}">Oppo</a></li>
-                            <li><a class="dropdown-item" href="#">Vivo</a></li>
-                            <li><a class="dropdown-item" href="#">Samsung</a></li>
-                        </ul>
-                    </li>
+                </li> --}}
 
-
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-dark" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">{{ $cat->c_name }}</a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{ route('category', $cat->c_name) }}">All</a></li>
+                                @if ($cat->subCategory->count() > 0)
+                                    @foreach ($cat->subCategory as $subcat)
+                                        <li>
+                                            <a class="dropdown-item"
+                                                href="{{ route('category.sub_category', ['category' => $cat->c_name, 'sub_category' => $subcat->c_name]) }}">
+                                                {{ $subcat->c_name }}
+                                            </a>
+                                        </li>
+                                    @endforeach
+                                @endif
+                            </ul>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
         </div>
